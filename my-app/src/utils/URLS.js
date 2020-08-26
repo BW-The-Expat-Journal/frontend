@@ -1,5 +1,5 @@
 
-export const BASE_URL = ' http://sj-mh-expat-journal.herokuapp.com/'
+export const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://sj-mh-expat-journal.herokuapp.com/'
 // get - For Registration attempts
 export const REGISTER_PATH = '/createnewuser'
 // get - For Login attempts
