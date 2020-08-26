@@ -1,6 +1,7 @@
-
 import React, { Component } from 'react';
 import Nav from './Nav'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { REGISTER_PATH } from '../utils/URLS'
 
 class Register extends Component {
   state = {
@@ -11,7 +12,6 @@ class Register extends Component {
 
 handleSubmit = event => {
     event.preventDefault();
-    
     const user = {
       primaryemail: this.state.primaryemail, 
       username:this.state.username,
@@ -19,6 +19,12 @@ handleSubmit = event => {
       
     }
     console.log(user);
+    
+    axiosWithAuth()
+    .post(REGISTER_PATH, user)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    
 }
 handleChange = event =>{
     this.setState({ ...this.state, [event.target.name]: event.target.value

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Nav from './Nav'
+import axios  from 'axios'
+
+
 class Login extends Component {
   state = {
     username: '',
@@ -15,6 +18,19 @@ handleSubmit = event => {
       
     }
     console.log(user);
+    axios.post('https://cors-anywhere.herokuapp.com/http://sj-mh-expat-journal.herokuapp.com/login', `grant_type=password&username=${user.username}&password=${user.password}`, {
+      headers: {
+        // btoa is converting our client id/client secret into base64
+        Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(res => {
+      localStorage.setItem('token', res.data.access_token);
+      console.log(res);
+      // props.history.push('/');
+    })
+    .catch(err => console.log(err));
 }
 handleChange = event =>{
     this.setState({ ...this.state, [event.target.name]: event.target.value
