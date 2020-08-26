@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./components/Home"; 
 import Register from './components/Register'; 
 import Login from './components/Login'
+import StoryForm from './components/StoryForm'
        
       
 const App = () => {
@@ -18,10 +19,12 @@ const App = () => {
              </Route>  
       
      <Route path="/Register">
-        <Register />
+        <Register component={Register}/>
       </Route>
 
-      
+      <Route path='/Post'>
+        <StoryForm component={StoryForm}/>
+      </Route>
           
             </div>
          );
