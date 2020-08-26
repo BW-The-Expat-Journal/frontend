@@ -1,9 +1,6 @@
 import React from "react"; 
- import { Link } from "react-router-dom"; 
- import Register from './Register'
- import Login from './Login'
- import Home from './Home'
- import styled from 'styled-components'
+import { Link } from "react-router-dom"; 
+import styled from 'styled-components'
 
 
  const StyledNav = styled.div `
@@ -22,9 +19,9 @@ import React from "react";
    return (
      <>
 <StyledNav>
-       <Link to="/Register" orders={Register}> SignUp</Link>
-       <Link to="/Login" orders={Login}> Login</Link>
-       <Link to="/Home" orders={Home}>Home</Link>
+       <Link to="/register" className='link'> SignUp</Link>
+       <Link to="/login" className='link'> Login</Link>
+       <Link to="/" className='link'>Home</Link>
 </StyledNav>
       
      </>

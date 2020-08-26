@@ -32,9 +32,9 @@ button{
 const Register = () => {
 
 
-    const [Password, setPassword] = useState("");
-    const [Email, setEmail] = useState("");
-    const [UserName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [userName, setUserName] = useState("");
 
 
     const handleSubmit = (event) => {
@@ -52,7 +52,7 @@ const Register = () => {
             <input
               name="Email"
               type="Email"
-              value={Email}
+              value={email}
               onChange={e => setEmail(e.target.value)}
               required />
           </label> 
@@ -63,7 +63,7 @@ const Register = () => {
             <input
               name="password"
               type="password"
-              value={Password}
+              value={password}
               onChange={e => setPassword(e.target.value)}
               required />
           </label> 
@@ -74,7 +74,7 @@ const Register = () => {
             <input
               name="userName"
               type="UserName"
-              value={UserName}
+              value={userName}
               onChange={e => setUserName(e.target.value)}
               required />
           </label>

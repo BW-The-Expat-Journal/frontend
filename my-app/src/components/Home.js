@@ -15,8 +15,8 @@ text-align:center;
      
      <StyledHome>
       <Nav/>
-      <h1>Expat Journal</h1>
-      <h2>Never Forget Another Adventure!</h2>
+        <h1>Expat Journal</h1>
+        <h2>Never Forget Another Adventure!</h2>
       </StyledHome>
      
    );
