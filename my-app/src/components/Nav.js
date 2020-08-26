@@ -20,8 +20,8 @@ import styled from 'styled-components'
      <>
 <StyledNav>
        <Link to="/register" className='link'> SignUp</Link>
-       <Link to="/login" className='link'> Login</Link>
-       <Link to="/" className='link'>Home</Link>
+       <Link to="/" className='link'> Login</Link>
+       <Link to="/home" className='link'>Home</Link>
 </StyledNav>
       
      </>
