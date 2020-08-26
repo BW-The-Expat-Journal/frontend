@@ -1,54 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Nav from './Nav'
-import { useState } from 'react';
+class Login extends Component {
+  state = {
+    username: '',
+    password: ''
+  };
 
-
-const Login = () => {
-
-
-    const [Password, setPassword] = useState("");
-    const [UserName, setUserName] = useState('');
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+handleSubmit = event => {
+    event.preventDefault();
+    
+    const user = { 
+      username:this.state.username,
+      password:this.state.password
+      
     }
-     
+    console.log(user);
+}
+handleChange = event =>{
+    this.setState({ ...this.state, [event.target.name]: event.target.value
+  })}
+render() {
     return (
-        <div>
-            <Nav/>
-        <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-            
-            <label>
-            Username:
-            <input
-              name="userName"
-              type="UserName"
-              value={UserName}
-              onChange={e => setUserName(e.target.value)}
-              required />
+<div>
+    <Nav/>
+        <form onSubmit = { this.handleSubmit }>
+          <label> User-Name:
+            <input type = "text" name = "username" onChange= {this.handleChange}/>
           </label>
-    
-    
-          <label>
-            Password:
-            <input
-              name="password"
-              type="password"
-              value={Password}
-              onChange={e => setPassword(e.target.value)}
-              required />
+
+          <label> Password:
+            <input type = "text" name = "password" onChange= {this.handleChange}/>
           </label>
-    
-          <button>Submit</button>
+          <button type = "submit"> Submit </button>
         </form>
-        </div>
-      );
-    }
-
-
-
- 
-
- export default Login;
+    </div>
+    );
+  }
+}
+export default Login; 

@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import Nav from './Nav'
 
 class Register extends Component {
   state = {
@@ -24,7 +25,9 @@ handleChange = event =>{
   })}
 render() {
     return (
+
 <div>
+    <Nav/>
         <form onSubmit = { this.handleSubmit }>
           <label> Email:
             <input type = "text" name = "primaryemail" onChange= {this.handleChange}/>
@@ -37,7 +40,7 @@ render() {
           <label> Password:
             <input type = "text" name = "password" onChange= {this.handleChange}/>
           </label>
-          <button type = "submit"> Add </button>
+          <button type = "submit"> Submit </button>
         </form>
     </div>
     );
