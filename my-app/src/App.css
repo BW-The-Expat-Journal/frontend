@@ -2,37 +2,68 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* const StyledNav = styled.div `
+ display:flex;
+ justify-content:space-around;
+ padding:3%;
+ background:darkslategray;
+ color:black;
+ text-shadow:none;
+ margin:2%;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+ 
+ `; */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+ /* const StyledLogin = styled.div `
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+ form {
+     display:flex;
+     flex-direction:column;
+     align-items:center;
+     text-align:center;
+ 
+ label{
+     display:flex;
+     flex-direction:column;
+ 
+ }
+ input{
+     margin:2%;
+ }
+ button{
+     margin:1%;
+ }
+ }
+ 
+  `; */
+
+  /* import styled from 'styled-components';
+
+ 
+ 
+
+  const StyledRegister = styled.div `
+ 
+ 
+ form {
+     display:flex;
+     flex-direction:column;
+     align-items:center;
+     text-align:center;
+ 
+ label{
+     display:flex;
+     flex-direction:column;
+ 
+ }
+ input{
+     margin:2%;
+ }
+ button{
+     margin:1%;
+ }
+ }
+ 
+  `;
+  */

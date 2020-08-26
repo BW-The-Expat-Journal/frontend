@@ -1,11 +1,11 @@
-      import React from "react"; 
-       import { Route } from "react-router-dom"; 
-       import Home from "./components/Home"; 
-       import Register from './components/Register'; 
-       import Login from './components/Login';
+import React from "react"; 
+import { Route } from "react-router-dom"; 
+import Home from "./components/Home"; 
+import Register from './components/Register'; 
+import Login from './components/Login'
        
       
-       const App = () => {
+const App = () => {
       
          return (
            <div>
@@ -13,11 +13,11 @@
                <Home component={Home} />
              </Route>  
       
-             <Route path="/Register">
-               <Register component={Register} />
-             </Route>
+      <Route path="/Register">
+        <Register />
+      </Route>
 
-             <Route path="/Login">
+             <Route exact path="/">
                <Login component={Login}/>
              </Route>
 
