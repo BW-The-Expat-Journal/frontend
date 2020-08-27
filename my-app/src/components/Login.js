@@ -17,7 +17,7 @@ const Login = (props) => {
 		event.preventDefault()
 		axios
 			.post(
-				'http://sj-mh-expat-journal.herokuapp.com/login ',
+				'https://sj-mh-expat-journal.herokuapp.com/login ',
 				`grant_type=password&username=${form.username}&password=${form.password}`,
 				{
 					headers: {
