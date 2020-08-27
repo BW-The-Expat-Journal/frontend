@@ -1,4 +1,3 @@
-
 export const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://sj-mh-expat-journal.herokuapp.com/'
 // get - For Registration attempts
 export const REGISTER_PATH = '/createnewuser'
@@ -22,5 +21,3 @@ export const PHOTO_PATH = '/photos/photos'
 export const PHOTOID_PATH = '/photos/photo/{photoid}'
 // deletes photos by adding {photoid}
 export const NEWPHOTO_PATH = '/photos/photo/story/{storyid}'
-
-
