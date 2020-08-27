@@ -1,55 +1,63 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Nav from './Nav'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-class StoryForm extends Component {
-	state = {
-		title: '',
-		location: '',
-		description: ''
-	}
+const initialForm = {
+	title: '',
+	location: '',
+	description: ''
+}
 
-	handleSubmit = (event) => {
+const StoryForm = () => {
+	const [ form, setForm ] = useState(initialForm)
+	const history = useHistory()
+	const dispatch = useDispatch()
+	const handleSubmit = (event) => {
 		event.preventDefault()
 
-		const story = {
-			title: this.state.title,
-			location: this.state.location,
-			description: this.state.description
-		}
-		console.log(story)
+		axiosWithAuth()
+			.post('http://sj-mh-expat-journal.herokuapp.com/stories/story/', form)
+			.then((res) => {
+				console.log('NEW STORY ', res)
+				// dispatch({ type: 'POST_STORY', payload: res.data })
+				history.push('/Home')
+			})
+			.catch((err) => {
+				console.log(err)
+			})
 	}
-	handleChange = (event) => {
-		this.setState({
-			...this.state,
+	const handleChange = (event) => {
+		setForm({
+			...form,
 			[event.target.name]: event.target.value
 		})
 	}
-	render() {
-		return (
-			<div>
-				<Nav />
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						{' '}
-						Title:
-						<input type="text" name="title" onChange={this.handleChange} />
-					</label>
+	return (
+		<div>
+			<Nav />
+			<form onSubmit={handleSubmit}>
+				<label>
+					{' '}
+					Title:
+					<input type="text" name="title" onChange={(e) => handleChange(e)} />
+				</label>
 
-					<label>
-						{' '}
-						location:
-						<input type="text" name="location" onChange={this.handleChange} />
-					</label>
+				<label>
+					{' '}
+					location:
+					<input type="text" name="location" onChange={(e) => handleChange(e)} />
+				</label>
 
-					<label>
-						{' '}
-						Description:
-						<input type="text" name="description" onChange={this.handleChange} />
-					</label>
-					<button type="submit"> Submit </button>
-				</form>
-			</div>
-		)
-	}
+				<label>
+					{' '}
+					Description:
+					<input type="text" name="description" onChange={(e) => handleChange(e)} />
+				</label>
+				<button type="submit"> Submit </button>
+			</form>
+		</div>
+	)
 }
 export default StoryForm
