@@ -17,7 +17,7 @@ const StoryForm = () => {
 	const history = useHistory()
 	useEffect(() => {
 		axiosWithAuth()
-			.get(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`)
+			.get(`https://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`)
 			.then((res) => {
 				console.log('EDIT RES', res)
 				setForm({
@@ -35,7 +35,7 @@ const StoryForm = () => {
 		event.preventDefault()
 		!editing
 			? axiosWithAuth()
-					.post('http://sj-mh-expat-journal.herokuapp.com/stories/story/', form)
+					.post('https://sj-mh-expat-journal.herokuapp.com/stories/story/', form)
 					.then((res) => {
 						console.log('NEW STORY ', res)
 						// dispatch({ type: 'POST_STORY', payload: res.data })
@@ -45,7 +45,7 @@ const StoryForm = () => {
 						console.log(err)
 					})
 			: axiosWithAuth()
-					.put(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`, form)
+					.put(`https://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`, form)
 					.then((res) => {
 						console.log(res)
 						history.push('/Home')

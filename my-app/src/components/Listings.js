@@ -9,7 +9,7 @@ const Listings = () => {
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('http://sj-mh-expat-journal.herokuapp.com/stories/stories')
+			.get('https://sj-mh-expat-journal.herokuapp.com/stories/stories')
 			.then((response) => {
 				dispatch({ type: 'FETCH_DATA', payload: response.data })
 			})
