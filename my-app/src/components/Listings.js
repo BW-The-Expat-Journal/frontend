@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Listing from './Listing'
-import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
@@ -23,7 +22,14 @@ const Listings = () => {
 	return (
 		<div>
 			{stories.map((story) => {
-				return <Listing title={story.title} location={story.location} description={story.description} />
+				return (
+					<Listing
+						title={story.title}
+						location={story.location}
+						description={story.description}
+						data={story}
+					/>
+				)
 			})}
 		</div>
 	)
