@@ -7,7 +7,7 @@ const Listing = (props) => {
 
 	const handleDelete = () => {
 		axiosWithAuth()
-			.delete(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${props.data.storyid}`)
+			.delete(`https://sj-mh-expat-journal.herokuapp.com/stories/story/${props.data.storyid}`)
 			.then((res) => {
 				console.log(res)
 				window.location.reload(true)
