@@ -13,6 +13,7 @@ const initialForm = {
 const StoryForm = () => {
 	const params = useParams()
 	const [ form, setForm ] = useState(initialForm)
+	const [ editing, setEditing ] = useState(false)
 	const history = useHistory()
 	useEffect(() => {
 		axiosWithAuth()
@@ -24,6 +25,7 @@ const StoryForm = () => {
 					location: res.data.location,
 					description: res.data.description
 				})
+				setEditing(true)
 			})
 			.catch((err) => {
 				console.log(err)
@@ -31,17 +33,27 @@ const StoryForm = () => {
 	}, [])
 	const handleSubmit = (event) => {
 		event.preventDefault()
-
-		axiosWithAuth()
-			.post('http://sj-mh-expat-journal.herokuapp.com/stories/story/', form)
-			.then((res) => {
-				console.log('NEW STORY ', res)
-				// dispatch({ type: 'POST_STORY', payload: res.data })
-				history.push('/Home')
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+		!editing
+			? axiosWithAuth()
+					.post('http://sj-mh-expat-journal.herokuapp.com/stories/story/', form)
+					.then((res) => {
+						console.log('NEW STORY ', res)
+						// dispatch({ type: 'POST_STORY', payload: res.data })
+						history.push('/Home')
+					})
+					.catch((err) => {
+						console.log(err)
+					})
+			: axiosWithAuth()
+					.put(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`, form)
+					.then((res) => {
+						console.log(res)
+						history.push('/Home')
+						setEditing(false)
+					})
+					.catch((err) => {
+						console.log(err)
+					})
 	}
 	const handleChange = (event) => {
 		setForm({
