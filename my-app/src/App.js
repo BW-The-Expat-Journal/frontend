@@ -23,6 +23,10 @@ const App = () => {
 			<Route path="/Post">
 				<StoryForm component={StoryForm} />
 			</Route>
+
+			<Route exact path="/edit_story/:id">
+				<StoryForm />
+			</Route>
 		</div>
 	)
 }

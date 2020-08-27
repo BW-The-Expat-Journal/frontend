@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './Nav'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 const initialForm = {
@@ -11,9 +11,24 @@ const initialForm = {
 }
 
 const StoryForm = () => {
+	const params = useParams()
 	const [ form, setForm ] = useState(initialForm)
 	const history = useHistory()
-	const dispatch = useDispatch()
+	useEffect(() => {
+		axiosWithAuth()
+			.get(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${params.id}`)
+			.then((res) => {
+				console.log('EDIT RES', res)
+				setForm({
+					title: res.data.title,
+					location: res.data.location,
+					description: res.data.description
+				})
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [])
 	const handleSubmit = (event) => {
 		event.preventDefault()
 
@@ -41,19 +56,19 @@ const StoryForm = () => {
 				<label>
 					{' '}
 					Title:
-					<input type="text" name="title" onChange={(e) => handleChange(e)} />
+					<input type="text" name="title" onChange={(e) => handleChange(e)} value={form.title} />
 				</label>
 
 				<label>
 					{' '}
 					location:
-					<input type="text" name="location" onChange={(e) => handleChange(e)} />
+					<input type="text" name="location" onChange={(e) => handleChange(e)} value={form.location} />
 				</label>
 
 				<label>
 					{' '}
 					Description:
-					<input type="text" name="description" onChange={(e) => handleChange(e)} />
+					<input type="text" name="description" onChange={(e) => handleChange(e)} value={form.description} />
 				</label>
 				<button type="submit"> Submit </button>
 			</form>

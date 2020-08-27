@@ -1,11 +1,11 @@
 import React from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { Link } from 'react-router-dom'
 
 const Listing = (props) => {
 	const { title, location, description } = props
-	console.log('LISTING COMPONENT ', props)
+
 	const handleDelete = () => {
-		console.log('CLICKED DELETE', props.data.storyid)
 		axiosWithAuth()
 			.delete(`http://sj-mh-expat-journal.herokuapp.com/stories/story/${props.data.storyid}`)
 			.then((res) => {
@@ -17,13 +17,15 @@ const Listing = (props) => {
 			})
 	}
 
-	const handleEdit = () => {}
+	// const handleEdit = () => {}
 	return (
 		<div>
-			<h1> {title} </h1>
+			<h1>{title} </h1>
 			<p> {location}</p>
 			<p>{description}</p>
-			<button>Edit Story</button>
+			<Link to={`/edit_story/${props.data.storyid}`}>
+				<button>Edit Story</button>
+			</Link>
 			<button onClick={() => handleDelete()}>Delete Story</button>
 		</div>
 	)
