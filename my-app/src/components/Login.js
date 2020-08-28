@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Nav from './Nav'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-
+import styled from 'styled-components'
+  
+ 
+ const StyledLogin = styled.div `
+  input{
+	  border:2px solid black;
+  }
+  input:invalid{
+	  border:2px solid red;
+  }
+ 
+  `
 const initialForm = {
 	username: '',
 	password: ''
@@ -37,26 +48,27 @@ const Login = (props) => {
 
 	const handleChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value })
+		
 	}
 
 	return (
-		<div>
+		<StyledLogin>
 			<Nav />
 			<form onSubmit={handleSubmit}>
 				<label>
 					{' '}
 					Username:
-					<input type="text" name="username" onChange={(e) => handleChange(e)} value={form.username} />
+					<input type="text" name="username" onChange={(e) => handleChange(e)} value={form.username} required/>
 				</label>
 
 				<label>
 					{' '}
 					Password:
-					<input type="text" name="password" onChange={(e) => handleChange(e)} value={form.password} />
+					<input type="text" name="password" onChange={(e) => handleChange(e)} value={form.password} required/>
 				</label>
 				<button type="submit"> Submit </button>
 			</form>
-		</div>
+		</StyledLogin>
 	)
 }
 export default Login

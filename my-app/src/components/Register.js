@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
 import Nav from './Nav'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+//import { axiosWithAuth } from '../utils/axiosWithAuth'
 import axios from 'axios'
 import { REGISTER_PATH, BASE_URL } from '../utils/URLS'
+import styled from 'styled-components';
+
+
+const StyledRegister = styled.div `
+
+input {
+	border: 2px solid black;	
+}
+input:invalid{
+	border: 2px solid red;
+}
+`
+
 
 class Register extends Component {
+
 	state = {
 		primaryemail: '',
 		username: '',
@@ -36,29 +50,29 @@ class Register extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<StyledRegister>
 				<Nav />
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						{' '}
 						Email:
-						<input type="text" name="primaryemail" onChange={this.handleChange} />
+						<input type="text" name="primaryemail" onChange={this.handleChange} required/>
 					</label>
 
 					<label>
 						{' '}
 						User-Name:
-						<input type="text" name="username" onChange={this.handleChange} />
+						<input type="text" name="username" onChange={this.handleChange} required />
 					</label>
 
 					<label>
 						{' '}
 						Password:
-						<input type="text" name="password" onChange={this.handleChange} />
+						<input type="text" name="password" onChange={this.handleChange}  required/>
 					</label>
 					<button type="submit"> Submit </button>
 				</form>
-			</div>
+			</StyledRegister>
 		)
 	}
 }
